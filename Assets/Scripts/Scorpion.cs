@@ -8,7 +8,7 @@ public class Scorpion : MonoBehaviour
     private Vector2 currentDistance;
     public float engageDistance;
     public float speed;
-    public GameObject player;
+    private GameObject player;
     public GameObject firePoint;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -19,6 +19,7 @@ public class Scorpion : MonoBehaviour
     void Start()
     {
         engaged = false;
+        player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();    
         spriteRenderer = GetComponent<SpriteRenderer>();
         takeDamage = GetComponent<TakeDamage>();
