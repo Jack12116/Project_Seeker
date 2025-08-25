@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class FireShard : MonoBehaviour
+public class PlayerFire : MonoBehaviour
 {
     public float timer;
     public GameObject rotatePoint;
@@ -47,7 +47,7 @@ public class FireShard : MonoBehaviour
         }
         if (tag.Equals("Enemy"))
         {
-            collision.GetComponent<TakeDamage>().takeDamage(1);
+            collision.GetComponent<PlayerHit>().takeDamage(1);
         }
     }
 

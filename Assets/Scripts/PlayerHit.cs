@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TakeDamage : MonoBehaviour
+public class PlayerHit : MonoBehaviour
 {
     public float health;
     public bool hit;

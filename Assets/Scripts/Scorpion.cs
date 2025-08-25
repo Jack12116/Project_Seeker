@@ -13,7 +13,7 @@ public class Scorpion : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     public GameObject stinger;
-    private TakeDamage takeDamage;
+    private PlayerHit playerHit;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,7 +22,7 @@ public class Scorpion : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();    
         spriteRenderer = GetComponent<SpriteRenderer>();
-        takeDamage = GetComponent<TakeDamage>();
+        playerHit = GetComponent<PlayerHit>();
         timer = 4;
     }
 
@@ -32,7 +32,7 @@ public class Scorpion : MonoBehaviour
         currentDistance = transform.position - player.transform.position;
         if (!engaged)
         {
-            engaged = takeDamage.hit;
+            engaged = playerHit.hit;
             if (currentDistance.x <= engageDistance && transform.position.x > player.transform.position.x)
             {
                 engaged = true;

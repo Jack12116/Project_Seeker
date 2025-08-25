@@ -1,7 +1,7 @@
 using System.Threading;
 using UnityEngine;
 
-public class AimShard : MonoBehaviour
+public class PlayerAim : MonoBehaviour
 {
     private Camera cam;
     private Vector3 cursor;

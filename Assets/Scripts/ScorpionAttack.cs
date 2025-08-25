@@ -3,7 +3,7 @@ using System.Diagnostics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class FireStinger : MonoBehaviour
+public class ScorpionAttack : MonoBehaviour
 {
     private GameObject player;
     public float speed;
