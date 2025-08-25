@@ -47,7 +47,7 @@ public class PlayerFire : MonoBehaviour
         }
         if (tag.Equals("Enemy"))
         {
-            collision.GetComponent<PlayerHit>().takeDamage(1);
+            collision.GetComponent<Hit>().takeDamage(1);
         }
     }
 

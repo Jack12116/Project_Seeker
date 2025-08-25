@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6672803819018957564}
   - component: {fileID: 7216504515827195204}
+  - component: {fileID: -5363149443663470263}
   m_Layer: 0
   m_Name: scorpion_hole
   m_TagString: Untagged
@@ -87,3 +88,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5363149443663470263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201220727840229208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792643904945b9445bb8be27595d7db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeDistance: 2
+  scorpionHole0: {fileID: 5470771423563313431, guid: cab8ac62ed2254f4f87c023e91c11424, type: 3}
+  scorpionHole1: {fileID: 8990117329904776404, guid: cab8ac62ed2254f4f87c023e91c11424, type: 3}
+  scorpionHole2: {fileID: -2211845985697789592, guid: cab8ac62ed2254f4f87c023e91c11424, type: 3}
+  scorpionHole3: {fileID: 3098585473422132353, guid: cab8ac62ed2254f4f87c023e91c11424, type: 3}
