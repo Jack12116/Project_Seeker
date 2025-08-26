@@ -1,22 +1,13 @@
 fileFormatVersion: 2
-guid: cab8ac62ed2254f4f87c023e91c11424
+guid: a12678f69f235414590c2fb1945cfeee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5470771423563313431
-    second: scorpion_hole_0
+      213: 509667453336418970
+    second: scorpion_crawl_0
   - first:
-      213: 8990117329904776404
-    second: scorpion_hole_1
-  - first:
-      213: -2211845985697789592
-    second: scorpion_hole_2
-  - first:
-      213: 3098585473422132353
-    second: scorpion_hole_3
-  - first:
-      213: -141584751347641732
-    second: scorpion_hole_4
+      213: -9188820824785558770
+    second: scorpion_crawl_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scorpion_hole_0
+      name: scorpion_crawl_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,42 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71179d4df951ceb40800000000000000
-      internalID: 5470771423563313431
+      spriteID: a9af1b539d3b21700800000000000000
+      internalID: 509667453336418970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scorpion_hole_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4d4be02741053cc70800000000000000
-      internalID: 8990117329904776404
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scorpion_hole_2
+      name: scorpion_crawl_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,52 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8690c9c7bc1fd41e0800000000000000
-      internalID: -2211845985697789592
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scorpion_hole_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 18403813213600b20800000000000000
-      internalID: 3098585473422132353
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scorpion_hole_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c72df463b6df80ef0800000000000000
-      internalID: -141584751347641732
+      spriteID: e03e1f1f420ca7080800000000000000
+      internalID: -9188820824785558770
       vertices: []
       indices: 
       edges: []
@@ -225,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 46cf3a2c5ca31e04f963f4567c6b0281
+    spriteID: 13a8ed93bdbc7f54ba53a0b848d9b877
     internalID: 0
     vertices: []
     indices: 
@@ -235,11 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      scorpion_hole_0: 5470771423563313431
-      scorpion_hole_1: 8990117329904776404
-      scorpion_hole_2: -2211845985697789592
-      scorpion_hole_3: 3098585473422132353
-      scorpion_hole_4: -141584751347641732
+      scorpion_crawl_0: 509667453336418970
+      scorpion_crawl_1: -9188820824785558770
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

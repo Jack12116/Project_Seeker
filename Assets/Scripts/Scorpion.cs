@@ -13,6 +13,7 @@ public class Scorpion : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     public GameObject stinger;
+    private Rigidbody2D rb;
     private Hit hit;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,16 +24,30 @@ public class Scorpion : MonoBehaviour
         animator = GetComponent<Animator>();    
         spriteRenderer = GetComponent<SpriteRenderer>();
         hit = GetComponent<Hit>();
-        timer = 4;
+        rb = GetComponent<Rigidbody2D>();
+        timer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         currentDistance = transform.position - player.transform.position;
-        if (!engaged)
+
+        if (animator.GetBool("crawl") && !engaged)
         {
+            rb.gravityScale = 0;
+            transform.Translate(new Vector2(0, -1) * speed * Time.deltaTime);
             engaged = hit.hit;
+            if (engaged)
+            {
+                rb.gravityScale = 1;
+                animator.SetBool("crawl", false);
+                engaged = true;
+            }
+        }
+        /*else if (!engaged)
+        {
+            
             if (currentDistance.x <= engageDistance && transform.position.x > player.transform.position.x)
             {
                 engaged = true;
@@ -41,7 +56,7 @@ public class Scorpion : MonoBehaviour
             {
                 engaged = true;
             }
-        }
+        }*/
         else
         {
             if (transform.position.x > player.transform.position.x && spriteRenderer.flipX == false)
@@ -66,16 +81,18 @@ public class Scorpion : MonoBehaviour
                 transform.Translate(new Vector2(1, 0) * speed * Time.deltaTime);
                 animator.SetBool("walking", true);
             }
-            else if (timer >= 4)
+            else
+            {
+                animator.SetBool("walking", false);
+            }
+
+            if (timer >= 4)
             {
                 animator.SetBool("walking", false);
                 animator.SetBool("attack", true);
                 timer = 0;
             }
-            else
-            {
-                animator.SetBool("walking", false);
-            }
+            
             timer += Time.deltaTime;
         }
     }
@@ -88,5 +105,12 @@ public class Scorpion : MonoBehaviour
     public void attackEnd() 
     {
         animator.SetBool("attack", false);
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        rb.gravityScale = 1;
+        animator.SetBool("crawl", false);
+        engaged = true;
     }
 }
