@@ -11,6 +11,7 @@ public class PlayerAim : MonoBehaviour
     public float force;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private Animator playerAnimator;
     private Rigidbody2D rb;
     public GameObject player;
     public GameObject aimProjectile;
@@ -21,6 +22,7 @@ public class PlayerAim : MonoBehaviour
     {
         cam = Camera.main;
         animator = aimProjectile.GetComponent<Animator>();
+        playerAnimator = player.GetComponent<Animator>();
         spriteRenderer = aimProjectile.GetComponent<SpriteRenderer>();
         rb = player.GetComponent<Rigidbody2D>();
         timer = 0;
@@ -30,7 +32,7 @@ public class PlayerAim : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if (Input.GetKey(KeyCode.Mouse1) && timer <= 0)
+        if (Input.GetKey(KeyCode.Mouse1) && timer <= 0 && !playerAnimator.GetBool("jump"))
         {
             animator.SetBool("aim", true);
             cursor = cam.ScreenToWorldPoint(Input.mousePosition);

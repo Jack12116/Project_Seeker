@@ -25,7 +25,7 @@ public class Scorpion : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         hit = GetComponent<Hit>();
         rb = GetComponent<Rigidbody2D>();
-        timer = 0;
+        timer = 2;
     }
 
     // Update is called once per frame
@@ -109,8 +109,11 @@ public class Scorpion : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        rb.gravityScale = 1;
-        animator.SetBool("crawl", false);
-        engaged = true;
+        if (collision.gameObject.tag == "PlayerProjectile" || collision.gameObject.tag == "Floor")
+        {
+            rb.gravityScale = 1;
+            animator.SetBool("crawl", false);
+            engaged = true;
+        }
     }
 }
