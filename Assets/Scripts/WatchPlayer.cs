@@ -21,6 +21,7 @@ public class WatchPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Change sprites relative to position of the player
         currentDistance = transform.position.x - player.transform.position.x;
         if (transform.position.x > player.transform.position.x && currentDistance > closeDistance)
         {

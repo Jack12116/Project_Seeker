@@ -15,7 +15,7 @@ public class PlayerTakeDamage : MonoBehaviour
     {
         
     }
-
+    //Player takes damage specified by the attack
     public void takeDamage(float damage)
     {
         health -= damage;

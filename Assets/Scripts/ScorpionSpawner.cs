@@ -27,6 +27,7 @@ public class ScorpionSpawner : MonoBehaviour
     {
         if (!spawned)
         {
+            //Use player's position relative to hole to determine sprites and spawning behavior
             currentDistance = transform.position.x - player.transform.position.x;
             if (transform.position.x > player.transform.position.x && currentDistance > closeDistance)
             {

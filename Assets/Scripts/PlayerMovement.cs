@@ -31,13 +31,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Gets movement from the keyboard arrows or A and D
         horizontal = Input.GetAxis("Horizontal");
-
+        //Checks if player is in the air
         if (rb.linearVelocity != new Vector2(0, 0) && land == false)
         {
             animator.SetBool("walking", false);
             animator.SetBool("jump", true);
         }
+        //Moves player if input is detected
         else if (horizontal != 0)
         {
             rb.linearVelocity = new Vector2(0, 0);
@@ -46,13 +48,14 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("jump", false);
             land = false;
         }
+        //Return to idle state if not moving
         else {
             rb.linearVelocity = new Vector2(0, 0);
             animator.SetBool("walking", false);
             animator.SetBool("jump", false);
             land = false;
         }
-
+        //Code to change direction player is facing
         if (horizontal < 0 && facingRight)
         {
             transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
@@ -64,11 +67,13 @@ public class PlayerMovement : MonoBehaviour
             rotatePoint.transform.localScale = new Vector3(rotatePoint.transform.localScale.x * -1, 1, 1);
             facingRight = true;
         }
+        //Attach camera to player
         cam.transform.position = new Vector3(transform.position.x + camX, transform.position.y + camY, -10);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Detect if player lands after going airborne
         if (collision.gameObject.tag.Equals("Floor"))
         {
             land = true;

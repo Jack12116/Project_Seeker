@@ -15,6 +15,8 @@ public class ScorpionAttack : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();  
         player = GameObject.FindWithTag("Player");
+
+        //Fire the projectile at the player
         Vector3 direction = player.transform.position - transform.position;
         rb.linearVelocity = new Vector2 (direction.x, direction.y).normalized * speed;
     }
@@ -22,13 +24,14 @@ public class ScorpionAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Code to destroy projectile after time has passed
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
             Destroy(this.gameObject);
         }
     }
-
+    //Code for when the projectile hits something
     public void OnTriggerEnter2D(Collider2D collision)
     {
         String tag = collision.gameObject.tag;

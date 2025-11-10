@@ -19,13 +19,14 @@ public class PlayerFire : MonoBehaviour
         contact = false;
         animator = GetComponent<Animator>();
         aimProjectile = GameObject.Find("AimProjectile");
-
+        //Set the rotation of the projectile
         transform.rotation = aimProjectile.transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Moves the gameobject and destroys when enough time passes
         if (!contact)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
@@ -36,7 +37,7 @@ public class PlayerFire : MonoBehaviour
             }
         }
     }
-
+    //Code for when projectile hits something
     public void OnTriggerEnter2D(Collider2D collision)
     {
         String tag = collision.gameObject.tag;
@@ -50,7 +51,7 @@ public class PlayerFire : MonoBehaviour
             collision.GetComponent<Hit>().takeDamage(1);
         }
     }
-
+    //Code to delete projectile
     public void destroy()
     {
         Destroy(this.gameObject);

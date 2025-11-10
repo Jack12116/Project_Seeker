@@ -31,14 +31,20 @@ public class PlayerAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Timer in-between firing bolts
         timer -= Time.deltaTime;
+        //Player can aim if timer is up and is grounded
         if (Input.GetKey(KeyCode.Mouse1) && timer <= 0 && !playerAnimator.GetBool("jump"))
         {
+            //Start aiming animation
             animator.SetBool("aim", true);
+            //Get the cursors position on the screen
             cursor = cam.ScreenToWorldPoint(Input.mousePosition);
+            //Get the mouses position relative to the player to determine aiming bolts
             rotation = cursor - transform.position;
             rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
 
+            //Use cursor position to determine where to aim bolt
             if (rotZ <= 15 && rotZ > -15)
             {
                 aimProjectile.transform.localPosition = new Vector2(.529F, .131F);
@@ -100,9 +106,11 @@ public class PlayerAim : MonoBehaviour
                 aimProjectile.transform.rotation = Quaternion.Euler(0, 0, -30);
             }        
 
+            //Code to fire bolt
             if (spriteRenderer.sprite != null)
             {
-                if (Input.GetKeyDown(KeyCode.Mouse0) && spriteRenderer.sprite.name.Equals("ice_shard_3"))
+                if (Input.GetKeyDown(KeyCode.Mouse0) && spriteRenderer.sprite.name.Equals("ice_shard_3") ||
+                    Input.GetKeyDown(KeyCode.Space) && spriteRenderer.sprite.name.Equals("ice_shard_3"))
                 {
                     Instantiate(iceShard, aimProjectile.transform.position, Quaternion.identity);
                     rb.linearVelocity = new Vector2(rotation.x, rotation.y).normalized * force;
@@ -111,6 +119,7 @@ public class PlayerAim : MonoBehaviour
                 }
             }
         }
+        //Code to stop aiming
         else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             animator.SetBool("aim", false);
