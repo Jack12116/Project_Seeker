@@ -49,9 +49,6 @@ TagManager:
   - name: background
     uniqueID: 1284001641
     locked: 0
-  - name: floor
-    uniqueID: 2948191059
-    locked: 0
   - name: enemies
     uniqueID: 120673899
     locked: 0

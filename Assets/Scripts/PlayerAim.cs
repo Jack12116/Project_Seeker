@@ -15,7 +15,7 @@ public class PlayerAim : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject player;
     public GameObject aimProjectile;
-    public GameObject iceShard;
+    public GameObject magicSpear;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -109,10 +109,10 @@ public class PlayerAim : MonoBehaviour
             //Code to fire bolt
             if (spriteRenderer.sprite != null)
             {
-                if (Input.GetKeyDown(KeyCode.Mouse0) && spriteRenderer.sprite.name.Equals("ice_shard_3") ||
-                    Input.GetKeyDown(KeyCode.Space) && spriteRenderer.sprite.name.Equals("ice_shard_3"))
+                if (Input.GetKeyDown(KeyCode.Mouse0) ||
+                    Input.GetKeyDown(KeyCode.Space))
                 {
-                    Instantiate(iceShard, aimProjectile.transform.position, Quaternion.identity);
+                    Instantiate(magicSpear, aimProjectile.transform.position, Quaternion.identity);
                     rb.linearVelocity = new Vector2(rotation.x, rotation.y).normalized * force;
                     timer = .5F;
                     animator.SetBool("aim", false);

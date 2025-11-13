@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8656378085270598587}
   - component: {fileID: 4633836780433837628}
   m_Layer: 0
-  m_Name: IceShard
+  m_Name: Magic Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,9 +78,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1248161319
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1613899782, guid: 1150d8b37d25b5c4f932167358ca2937, type: 3}
+  m_Sprite: {fileID: -1239011598, guid: 98f19218b42be7a4bb7cb1e8f4659686, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.093400426, y: -0.12459419}
+  m_Offset: {x: 0.06278306, y: 0.031052351}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -135,7 +135,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.44074523, y: 0.12811877}
+  m_Size: {x: 0.6285449, y: 0.19037735}
   m_EdgeRadius: 0
 --- !u!114 &4944817083798934342
 MonoBehaviour:

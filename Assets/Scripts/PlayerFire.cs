@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 public class PlayerFire : MonoBehaviour
 {
     public float timer;
-    public GameObject rotatePoint;
     public GameObject aimProjectile;
     private Animator animator;
     public float speed;
