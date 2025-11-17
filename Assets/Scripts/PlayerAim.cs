@@ -6,8 +6,13 @@ public class PlayerAim : MonoBehaviour
     private Camera cam;
     private Vector3 cursor;
     private Vector3 rotation;
-    private float rotZ;
-    private float timer;
+    public float rotZ;
+    private float delayTimer1;
+    public float resetTimer1;
+    private float delayTimer2;
+    public float resetTimer2;
+    private float bufferTimer;
+    public float resetTimer3;
     public float force;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -25,16 +30,19 @@ public class PlayerAim : MonoBehaviour
         playerAnimator = player.GetComponent<Animator>();
         spriteRenderer = aimProjectile.GetComponent<SpriteRenderer>();
         rb = player.GetComponent<Rigidbody2D>();
-        timer = 0;
+        delayTimer1 = 0;
+        delayTimer2 = resetTimer2;
+        bufferTimer = resetTimer3;
     }
 
     // Update is called once per frame
     void Update()
     {
         //Timer in-between firing bolts
-        timer -= Time.deltaTime;
+        delayTimer1 -= Time.deltaTime;
+        bufferTimer -= Time.deltaTime;
         //Player can aim if timer is up and is grounded
-        if (Input.GetKey(KeyCode.Mouse1) && timer <= 0 && !playerAnimator.GetBool("jump"))
+        if (Input.GetKey(KeyCode.Mouse1) && delayTimer1 <= 0)
         {
             //Start aiming animation
             animator.SetBool("aim", true);
@@ -43,8 +51,15 @@ public class PlayerAim : MonoBehaviour
             //Get the mouses position relative to the player to determine aiming bolts
             rotation = cursor - transform.position;
             rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+            if (bufferTimer <= 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, rotZ);
+                bufferTimer = resetTimer3;
+            }
+            delayTimer2 -= Time.deltaTime;
 
             //Use cursor position to determine where to aim bolt
+            /*
             if (rotZ <= 15 && rotZ > -15)
             {
                 aimProjectile.transform.localPosition = new Vector2(.529F, .131F);
@@ -104,17 +119,18 @@ public class PlayerAim : MonoBehaviour
             {
                 aimProjectile.transform.localPosition = new Vector2(.397F, -.039F);
                 aimProjectile.transform.rotation = Quaternion.Euler(0, 0, -30);
-            }        
+            }
+            */
 
             //Code to fire bolt
             if (spriteRenderer.sprite != null)
             {
-                if (Input.GetKeyDown(KeyCode.Mouse0) ||
-                    Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Mouse0) && delayTimer2 <= 0)
                 {
                     Instantiate(magicSpear, aimProjectile.transform.position, Quaternion.identity);
                     rb.linearVelocity = new Vector2(rotation.x, rotation.y).normalized * force;
-                    timer = .5F;
+                    delayTimer1 = resetTimer1;
+                    delayTimer2 = resetTimer2;
                     animator.SetBool("aim", false);
                 }
             }
@@ -123,6 +139,7 @@ public class PlayerAim : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             animator.SetBool("aim", false);
+            delayTimer2 = resetTimer2;
         }
     }
 }

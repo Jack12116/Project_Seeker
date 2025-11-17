@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Camera cam;
     public GameObject rotatePoint;
     private Rigidbody2D rb;
+    private PlayerAim playerAim;
     private bool facingRight;
     private float horizontal;
     public float speed;
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         tilemap = GameObject.FindWithTag("Floor");
         CompositeCollider2D = tilemap.GetComponent<CompositeCollider2D>();
         cam = Camera.main;
+        playerAim = rotatePoint.GetComponent<PlayerAim>();
         facingRight = true;
         land = false;
     }
@@ -34,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         //Gets movement from the keyboard arrows or A and D
         horizontal = Input.GetAxis("Horizontal");
         //Checks if player is in the air
-        if (rb.linearVelocity != new Vector2(0, 0) && land == false)
+        if (rb.linearVelocity.y != 0 && land == false)
         {
             animator.SetBool("walking", false);
             animator.SetBool("jump", true);
@@ -60,11 +62,13 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
             rotatePoint.transform.localScale = new Vector3(rotatePoint.transform.localScale.x * -1, 1, 1);
+            rotatePoint.transform.rotation = Quaternion.Euler(0, 0, playerAim.rotZ);
             facingRight = false;
         }
         else if (horizontal > 0 && !facingRight) {
             transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
             rotatePoint.transform.localScale = new Vector3(rotatePoint.transform.localScale.x * -1, 1, 1);
+            rotatePoint.transform.rotation = Quaternion.Euler(0, 0, playerAim.rotZ);
             facingRight = true;
         }
         //Attach camera to player
