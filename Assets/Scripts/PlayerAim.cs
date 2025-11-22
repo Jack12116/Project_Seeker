@@ -42,7 +42,7 @@ public class PlayerAim : MonoBehaviour
         delayTimer1 -= Time.deltaTime;
         bufferTimer -= Time.deltaTime;
         //Player can aim if timer is up and is grounded
-        if (Input.GetKey(KeyCode.Mouse1) && delayTimer1 <= 0)
+        if (Input.GetKey(KeyCode.Mouse1) && delayTimer1 <= 0 || Input.GetKey(KeyCode.Space) && delayTimer1 <= 0)
         {
             //Start aiming animation
             animator.SetBool("aim", true);
@@ -123,20 +123,17 @@ public class PlayerAim : MonoBehaviour
             */
 
             //Code to fire bolt
-            if (spriteRenderer.sprite != null)
-            {
-                if (Input.GetKeyDown(KeyCode.Mouse0) && delayTimer2 <= 0)
-                {
-                    Instantiate(magicSpear, aimProjectile.transform.position, Quaternion.identity);
-                    rb.linearVelocity = new Vector2(rotation.x, rotation.y).normalized * force;
-                    delayTimer1 = resetTimer1;
-                    delayTimer2 = resetTimer2;
-                    animator.SetBool("aim", false);
-                }
-            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && delayTimer2 <= 0 || Input.GetKeyUp(KeyCode.Space) && delayTimer2 <= 0)
+        {
+            Instantiate(magicSpear, aimProjectile.transform.position, Quaternion.identity);
+            rb.linearVelocity = new Vector2(rotation.x, rotation.y).normalized * force;
+            delayTimer1 = resetTimer1;
+            delayTimer2 = resetTimer2;
+            animator.SetBool("aim", false);
         }
         //Code to stop aiming
-        else if (Input.GetKeyUp(KeyCode.Mouse1))
+        else if (Input.GetKeyUp(KeyCode.Mouse1) || Input.GetKeyUp(KeyCode.Space) && delayTimer2 > 0)
         {
             animator.SetBool("aim", false);
             delayTimer2 = resetTimer2;

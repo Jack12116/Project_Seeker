@@ -90,7 +90,7 @@ AnimatorController:
   m_Name: Lost_Soul
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Dissapear
+  - m_Name: Disappear
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -149,7 +149,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Dissapear
+    m_ConditionEvent: Disappear
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6659686635010132999}
@@ -175,9 +175,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: Reappear
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Dissapear
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3043753689786305004}
@@ -207,7 +204,7 @@ AnimatorStateMachine:
     m_Position: {x: 414.39124, y: 108.027466, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6659686635010132999}
-    m_Position: {x: 635.5, y: 190, z: 0}
+    m_Position: {x: 190, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7880649159648977914}
     m_Position: {x: 340, y: 270, z: 0}
