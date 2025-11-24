@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2855286836508218083}
+  - component: {fileID: 1512737125606870982}
   - component: {fileID: 3512449087250085665}
   - component: {fileID: 7929101473934108719}
   - component: {fileID: 30136860827793603}
-  - component: {fileID: 1512737125606870982}
   - component: {fileID: 8858205864412847091}
   m_Layer: 0
-  m_Name: lost_soul_tele_0
+  m_Name: lost_soul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,6 +36,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1512737125606870982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818211176848062595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98aaa9da5a723854786224adc421ad77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engageDistance: 4
+  resetTimer1: 3
+  resetTimer2: 3
+  teleportDistance: 1
+  empty: {fileID: 0}
 --- !u!212 &3512449087250085665
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -166,22 +183,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &1512737125606870982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1818211176848062595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98aaa9da5a723854786224adc421ad77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  engageDistance: 4
-  resetTimer1: 3
-  resetTimer2: 3
+  m_Constraints: 7
 --- !u!95 &8858205864412847091
 Animator:
   serializedVersion: 7

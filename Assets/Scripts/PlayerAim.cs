@@ -124,7 +124,7 @@ public class PlayerAim : MonoBehaviour
 
             //Code to fire bolt
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse0) && delayTimer2 <= 0 || Input.GetKeyUp(KeyCode.Space) && delayTimer2 <= 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && delayTimer2 <= 0 || Input.GetKeyUp(KeyCode.Space) && delayTimer2 <= 0)
         {
             Instantiate(magicSpear, aimProjectile.transform.position, Quaternion.identity);
             rb.linearVelocity = new Vector2(rotation.x, rotation.y).normalized * force;
