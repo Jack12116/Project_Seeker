@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class PlayerTakeDamage : MonoBehaviour
+public class Attack : MonoBehaviour
 {
-    public float health;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,13 +13,12 @@ public class PlayerTakeDamage : MonoBehaviour
     {
         
     }
-    //Player takes damage specified by the attack
-    public void takeDamage(float damage)
-    {
-        health -= damage;
-        if (health <= 0) 
-        {
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerTakeDamage>().takeDamage(1);
         }
     }
 }

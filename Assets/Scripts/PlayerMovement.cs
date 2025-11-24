@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private GameObject tilemap;
     private CompositeCollider2D CompositeCollider2D;
-    private Camera cam;
     public GameObject rotatePoint;
     private Rigidbody2D rb;
     private PlayerAim playerAim;
@@ -24,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         tilemap = GameObject.FindWithTag("Floor");
         CompositeCollider2D = tilemap.GetComponent<CompositeCollider2D>();
-        cam = Camera.main;
         playerAim = rotatePoint.GetComponent<PlayerAim>();
         facingRight = true;
         land = false;
@@ -71,8 +69,6 @@ public class PlayerMovement : MonoBehaviour
             rotatePoint.transform.rotation = Quaternion.Euler(0, 0, playerAim.rotZ);
             facingRight = true;
         }
-        //Attach camera to player
-        cam.transform.position = new Vector3(transform.position.x + camX, transform.position.y + camY, -10);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

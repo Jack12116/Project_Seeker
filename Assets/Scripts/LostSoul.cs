@@ -17,6 +17,7 @@ public class LostSoul : MonoBehaviour
     private bool animComplete;
     private bool faceRight;
     private int randomNumber;
+    public GameObject attack;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -86,10 +87,21 @@ public class LostSoul : MonoBehaviour
         timer2 = resetTimer2;
     }
 
+    public void attackBoxActive()
+    {
+        attack.GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    public void attackBoxEnd()
+    {
+        attack.GetComponent<BoxCollider2D>().enabled = false;
+    }
+
     public void attackEnd()
     {
         animator.SetBool("Attack", false);
     }
+
 
     public void changeAxis()
     {
