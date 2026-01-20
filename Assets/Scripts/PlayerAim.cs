@@ -11,7 +11,6 @@ public class PlayerAim : MonoBehaviour
     public float resetTimer1;
     private float delayTimer2;
     public float resetTimer2;
-    private float bufferTimer;
     public float resetTimer3;
     public float force;
     private SpriteRenderer spriteRenderer;
@@ -32,7 +31,6 @@ public class PlayerAim : MonoBehaviour
         rb = player.GetComponent<Rigidbody2D>();
         delayTimer1 = 0;
         delayTimer2 = resetTimer2;
-        bufferTimer = resetTimer3;
     }
 
     // Update is called once per frame
@@ -40,9 +38,8 @@ public class PlayerAim : MonoBehaviour
     {
         //Timer in-between firing bolts
         delayTimer1 -= Time.deltaTime;
-        bufferTimer -= Time.deltaTime;
         //Player can aim if timer is up and is grounded
-        if (Input.GetKey(KeyCode.Mouse1) && delayTimer1 <= 0 || Input.GetKey(KeyCode.Space) && delayTimer1 <= 0)
+        if (Input.GetKey(KeyCode.Mouse1) && delayTimer1 <= 0)
         {
             //Start aiming animation
             animator.SetBool("aim", true);
@@ -51,19 +48,15 @@ public class PlayerAim : MonoBehaviour
             //Get the mouses position relative to the player to determine aiming bolts
             rotation = cursor - transform.position;
             rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-            if (bufferTimer <= 0)
-            {
-                transform.rotation = Quaternion.Euler(0, 0, rotZ);
-                bufferTimer = resetTimer3;
-            }
+            transform.rotation = Quaternion.Euler(0, 0, rotZ);
             delayTimer2 -= Time.deltaTime;
 
         //Code to fire bolt
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && delayTimer2 <= 0 || Input.GetKeyUp(KeyCode.Space) && delayTimer2 <= 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && delayTimer2 <= 0)
         {
             Instantiate(magicSpear, aimProjectile.transform.position, Quaternion.identity);
-            rb.linearVelocity = new Vector2(rotation.x, rotation.y).normalized * force;
+            //rb.linearVelocity = new Vector2(rotation.x, rotation.y).normalized * force;
             delayTimer1 = resetTimer1;
             delayTimer2 = resetTimer2;
             animator.SetBool("aim", false);
