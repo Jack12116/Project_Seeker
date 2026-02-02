@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight;
     private float horizontal;
     public float speed;
+    public float jump;
     public float camX;
     public float camY;
     private bool land;
@@ -38,11 +39,11 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("walking", false);
             animator.SetBool("jump", true);
+            transform.Translate(new Vector2(horizontal, 0) * speed * Time.deltaTime);
         }
         //Moves player if input is detected
         else if (horizontal != 0)
         {
-            rb.linearVelocity = new Vector2(0, 0);
             animator.SetBool("walking", true);
             transform.Translate(new Vector2(horizontal, 0) * speed * Time.deltaTime);
             animator.SetBool("jump", false);
@@ -50,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
         }
         //Return to idle state if not moving
         else {
-            rb.linearVelocity = new Vector2(0, 0);
             animator.SetBool("walking", false);
             animator.SetBool("jump", false);
             land = false;
@@ -69,6 +69,15 @@ public class PlayerMovement : MonoBehaviour
             rotatePoint.transform.rotation = Quaternion.Euler(0, 0, playerAim.rotZ);
             facingRight = true;
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+    }
+
+    public void Jump()
+    {
+        rb.linearVelocityY = jump;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
